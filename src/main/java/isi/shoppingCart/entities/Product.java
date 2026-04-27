@@ -1,11 +1,9 @@
 package isi.shoppingCart.entities;
-
 public class Product {
     private int id;
     private String name;
     private double price;
     private int availableQuantity;
-
     public Product(int id, String name, double price, int availableQuantity) {
         this.id = id;
         this.name = name;

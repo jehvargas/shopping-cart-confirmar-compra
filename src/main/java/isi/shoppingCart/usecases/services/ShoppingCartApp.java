@@ -23,7 +23,7 @@ public class ShoppingCartApp {
     private PurchaseRepository purchaseRepository;
     private AgregarProductoAlCarritoUseCase agregarProductoAlCarritoUseCase;
     private ConfirmarCompraUseCase confirmarCompraUseCase;
-
+    private EliminarProductoDelCarrito eliminarProductoDelCarrito;////////////////////////////
     public ShoppingCartApp() {
         productRepository = new InMemoryProductRepository();
         cartRepository = new InMemoryCartRepository();
@@ -32,8 +32,15 @@ public class ShoppingCartApp {
         agregarProductoAlCarritoUseCase = new AgregarProductoAlCarritoUseCase(productRepository, cartRepository);
         confirmarCompraUseCase = new ConfirmarCompraUseCase(cartRepository, customerRepository, purchaseRepository);
 
+        eliminarProductoDelCarrito =
+                new EliminarProductoDelCarrito(cartRepository);////////////////////
+
         cargarDatosIniciales();
     }
+
+    public OperationResult removeProductFromCart(int productId) {////////////////////////
+        return eliminarProductoDelCarrito.execute(productId);
+    }/////////////////////////////////////
 
     public ShoppingCartApp(ProductRepository productRepository,
                            CartRepository cartRepository,

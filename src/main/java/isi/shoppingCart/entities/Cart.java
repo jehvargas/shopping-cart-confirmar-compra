@@ -1,5 +1,4 @@
 package isi.shoppingCart.entities;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -54,4 +53,17 @@ public class Cart {
 
         return total;
     }
+
+    public void removeProduct(int productId) {/// ////////////////////////////
+        int i;
+
+        for (i = 0; i < items.size(); i++) {
+            CartItem item = items.get(i);
+
+            if (item.getProduct().getId() == productId) {
+                items.remove(i);
+                return;
+            }
+        }
+    }///////////////////////////////////////////////////////////////////
 }
